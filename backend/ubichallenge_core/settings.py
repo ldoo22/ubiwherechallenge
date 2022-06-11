@@ -19,10 +19,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
+# SECURITY WARNING: keep the secret key used in production secret!  # Todo put in enviroment variable
 SECRET_KEY = 'django-insecure-&s9_-+77d0z4r#st8^$g2w6tget-xoz6$&b5sj*ja%qukg@6ra'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production!  # Todo use env var
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',  # Todo document this
+    'rest_framework_gis',  # Todo document this
+    'ubichallenge',  # Todo document this
 ]
 
 MIDDLEWARE = [
@@ -81,11 +84,12 @@ WSGI_APPLICATION = 'ubichallenge_core.wsgi.application'
 #}
 DATABASES = {  # Todo instead of hardcoded use enviroment variables
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': "ldoodb",
         'USER': "ldoo",
         'PASSWORD': "ldoo123",
-        'HOST': "127.0.0.1",
+        'HOST': "123.12.1.2",
         'PORT': 5432,
     }
 }

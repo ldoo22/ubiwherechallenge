@@ -1,0 +1,38 @@
+#FROM python:3.11-rc-slim
+FROM andrejreznik/python-gdal:stable
+
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# Install gdal. Taken from here: https://mothergeo-py.readthedocs.io/en/latest/development/how-to/gdal-ubuntu-pkg.html
+#RUN add-apt-repository ppa:ubuntugis/ppa
+#RUN apt-get update && \
+  #apt-get install gdal-bin && \
+  #apt-get install libgdal-dev && \
+  #export CPLUS_INCLUDE_PATH=/usr/include/gdal && \
+  #export C_INCLUDE_PATH=/usr/include/gdal && \
+  #pip install GDAL
+
+#COPY requirements.txt /
+
+#RUN apk add --virtual .build-deps --no-cache postgresql-dev gcc python3-dev musl-dev && \
+    #pip install --no-cache-dir -r requirements.txt && \
+    #apk --purge del .build-deps
+
+# RUN pip install --upgrade pip
+# RUN pip install --no-cache-dir -r requirements.txt
+# was having troubles with above
+RUN pip install django
+RUN pip install djangorestframework
+RUN pip install djangorestframework-gis
+RUN pip install psycopg2
+
+#COPY . .
+#RUN chmod +x /boot.sh 
+#RUN apk add --no-cache libpq && \
+    #chmod +x /boot.sh && \
+    #dos2unix /boot.sh
+
+RUN mkdir project
+
+CMD ["sleep", "infinity"]

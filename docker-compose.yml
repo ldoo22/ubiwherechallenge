@@ -12,6 +12,29 @@ services:
       - 5432:5432
     volumes:
       - data:/var/lib/postgresql/data
+    networks:
+      dock_net:
+          ipv4_address: 123.12.1.2
+  django_dev:
+    build:
+      context: ./backend
+      dockerfile: DockerFile.dev
+    container_name: django_dev
+    volumes:
+      - ./backend:/root/project
+    ports:
+      - 8000:8000
+    networks:
+      dock_net:
+          ipv4_address: 123.12.1.3
 
 volumes:
   data:
+
+networks:
+  dock_net:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 123.12.1.0/8
+         gateway: 123.12.1.1

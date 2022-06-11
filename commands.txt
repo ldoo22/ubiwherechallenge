@@ -11,3 +11,9 @@ pip install psycopg2
 # Setup settings.py with database postgress
 python manage.py migrate
 python manage.py createsuperuser
+
+## Create app
+# "django-admin startproject ubichallenge_core"
+# "django-admin startapp ubichallenge"
+
+
