@@ -1,6 +1,10 @@
 from django.urls import path
-#import views
+from .views import *
+
 
 urlpatterns = [
-  #path('ListCreate/', views.ListsListCreate.as_view(), name = 'ListsListCreate'),
+    path('segment', SegmentListApi.as_view()),
+    path('segment/create', SegmentCreateApi.as_view()),
+    path('segment/<int:pk>', SegmentUpdateApi.as_view()),
+    path('segment/<int:pk>/delete', SegmentDeleteApi.as_view()),
 ]
