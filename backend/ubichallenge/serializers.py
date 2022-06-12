@@ -1,5 +1,12 @@
-from .models import AverageSpeed, Segment
+from .models import AverageSpeed, Segment, Location
 from rest_framework import serializers
+from django.contrib.gis.geos import Point
+
+
+class LocationSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = Location
+    fields = '__all__'
 
 
 class SegmentSerializer(serializers.ModelSerializer):

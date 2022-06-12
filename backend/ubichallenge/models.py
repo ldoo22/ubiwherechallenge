@@ -8,7 +8,7 @@ class Location(models.Model):
   """
   Information about a particular location
   """
-  point = models.PointField(geography=True, default=Point(0.0, 0.0))
+  point = models.PointField(geography=True, default=Point(0.0, 0.0), unique=True)
 
   def __str__(self):
     return "(" + str(self.point.x) + ", " + str(self.point.y) + ")"
@@ -18,11 +18,14 @@ class Segment(models.Model):
   """
   Information about a segment composed of a start location and a end location
   """
-  start = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="start")
-  end = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="end")
+  start = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="start", default=None)
+  end = models.ForeignKey(Location, on_delete=models.CASCADE, related_name="end", default=None)
 
   def __str__(self):
     return str(self.start) + " -> " + str(self.end)
+
+  class Meta:
+    unique_together = ('start', 'end')
 
 
 class AverageSpeed(models.Model):
