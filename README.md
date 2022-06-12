@@ -1,6 +1,5 @@
 # ubiwherechallenge
-Did not complete the challenge :( I would required more time (had an afternoon and a morning to do it)
-What I did:
+Did not complete the challenge :( I would required more time (time spent: saturday afternoon and sunday morning). What I did:
 - Postgres + postgis
 	- Used prebuilt docker image: mdillon/postgis
 - Django + GDAL
